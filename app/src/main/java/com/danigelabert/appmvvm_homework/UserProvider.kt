@@ -2,6 +2,12 @@ package com.danigelabert.appmvvm_homework
 
 class UserProvider {
     companion object{
+        var position = 1
+        fun nextUser(): User{
+            position++
+            return userName[position]
+        }
+
         val userName = listOf<User>(
             User("Dani", 22, "dani@gmail.com", "patata123"),
             User("Ruben", 13, "ruben@gmail.com", "patata123"),
