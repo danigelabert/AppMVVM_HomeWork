@@ -14,17 +14,9 @@ class LoginViewModel: ViewModel() {
         get() = _password
 
 
-    fun comprovacioLogIn(userEditText: String, passwordEditText: String): Boolean {
-        var nextUser = UserProvider.nextUser()
-        while (nextUser!=null){
-            nextUser = UserProvider.nextUser()
-            _user = nextUser.name
-            _password = nextUser.pwd
-
-            if (_user==userEditText && _password==passwordEditText){
-                return true;
-            }
-        }
-        return false
+    fun login(username: String, password: String): Boolean {
+        return UserProvider.login(username, password)
     }
+
+
 }

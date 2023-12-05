@@ -24,10 +24,11 @@ class LoginFragment : Fragment() {
     ): View? {
         binding = FragmentLoginBinding.inflate(layoutInflater)
         binding.logInButton.setOnClickListener {
-            viewModel.comprovacioLogIn(binding.userEditText.text.toString(), binding.psdEditText.text.toString())
-            if (comprovacio==true){
-                Toast.makeText(this.context, "Notificación corta", Toast.LENGTH_LONG).show();
+
+            if (viewModel.login(binding.userEditText.text.toString(), binding.psdEditText.text.toString())) {
+                findNavController().navigate(R.id.action_loginFragment_to_viewUserFragment, null)
             }
+
         }
         return binding.root
     }

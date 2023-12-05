@@ -26,4 +26,5 @@ class ViewUserViewModel: ViewModel() {
         _edat = nextUser.edat
 
     }
+
 }
