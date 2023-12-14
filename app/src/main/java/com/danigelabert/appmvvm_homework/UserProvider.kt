@@ -16,13 +16,13 @@ class UserProvider {
 
 
         val userName = listOf<User>(
-            User("Dani", 22, "dani@gmail.com", "patata123"),
-            User("Ruben", 13, "ruben@gmail.com", "patata123"),
-            User("Marc", 19, "marc@gmail.com", "patata123"),
-            User("Pau", 5, "pau@gmail.com", "patata123"),
-            User("Arnau", 34, "arnau@gmail.com", "patata123"),
-            User("Aram", 18, "aram@gmail.com", "patata123"),
-            User("Alex", 22, "alex@gmail.com", "patata123"),
+            User("Dani", "patata123"),
+            User("Ruben",  "patata123"),
+            User("Marc",  "patata123"),
+            User("Pau",  "patata123"),
+            User("Arnau", "patata123"),
+            User("Aram", "patata123"),
+            User("Alex", "patata123"),
             )
     }
 }

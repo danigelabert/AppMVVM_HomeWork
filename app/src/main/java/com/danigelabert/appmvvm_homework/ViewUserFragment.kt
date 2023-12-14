@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.danigelabert.appmvvm_homework.databinding.FragmentLoginBinding
 import com.danigelabert.appmvvm_homework.databinding.FragmentViewUserBinding
 
 class ViewUserFragment : Fragment() {
-    private val viewModel: ViewUserViewModel by viewModels()
+    private val sharedViewModel: SharedViewModel by viewModels()
     private lateinit var binding: FragmentViewUserBinding
 
     override fun onCreateView(
@@ -18,16 +20,13 @@ class ViewUserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentViewUserBinding.inflate(layoutInflater)
-        viewModel.nextUser()
-        binding.edatTextView.text = viewModel.edat.toString()
-        binding.emailTextView.text = viewModel.email
-        binding.userTextView.text = viewModel.user
-        binding.root.setOnClickListener{
-            viewModel.nextUser()
-            binding.edatTextView.text = viewModel.edat.toString()
-            binding.emailTextView.text = viewModel.email
-            binding.userTextView.text = viewModel.user
-        }
+
+        val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+
+        model._user.observe(viewLifecycleOwner, Observer {
+            binding.userTextView.text = it.name
+            binding.edatTextView.text = it.pwd
+        })
 
         return binding.root
     }
